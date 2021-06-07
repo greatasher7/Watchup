@@ -58,9 +58,9 @@ const Iframe = ({title}) => {
                     title="sample" 
                     id="player" 
                     type="text/html" 
-                    src={`http://www.youtube.com/embed/${id[0]}`}
+                    src={`https://www.youtube.com/embed/${id[0]}`}
                     frameborder="0" 
-                    />
+                />
             </Article>
             <Article>
                 <VideoTitle>Official Trailer 2</VideoTitle>
@@ -68,9 +68,9 @@ const Iframe = ({title}) => {
                     title="sample" 
                     id="player" 
                     type="text/html" 
-                    src={`http://www.youtube.com/embed/${id[1]}`}
+                    src={`https://www.youtube.com/embed/${id[1]}`}
                     frameborder="0" 
-                    />
+                />
             </Article>
             <Article>
                 <VideoTitle>OST</VideoTitle>
@@ -78,9 +78,9 @@ const Iframe = ({title}) => {
                     title="sample" 
                     id="player" 
                     type="text/html" 
-                    src={`http://www.youtube.com/embed/${id[2]}`}
+                    src={`https://www.youtube.com/embed/${id[2]}`}
                     frameborder="0" 
-                    />
+                />
             </Article>
         </Container>
     );

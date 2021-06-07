@@ -14,7 +14,6 @@ const Container = styled.div`
     padding: 50px 1.5rem;
 `;
 
-
 const Home = () => {
 
     const [popularMovies, popularShow, randomMovie, error, loading] = useGetHome();

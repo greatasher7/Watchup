@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import {youtubeApi} from "api"; 
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
@@ -11,12 +12,13 @@ const ContainerBg = styled.div`
     position: fixed;
     width: 100%;
     height: 100vh;
-    background-image: url(${props => props.bgImg});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; 
-    opacity: .2;
+    opacity: .3;
     z-index: -1;
+`;
+
+const Video = styled.iframe`
+    width: 100%;
+    height: 100vh;
 `;
 
 const ContainerInfo = styled.div`
@@ -86,10 +88,36 @@ const DetailLink = styled(Link)`
 
 
 const HomeDetail = (props) => {
+    console.log(props.movie);
+
+    const [id, setId] = useState()
+
+    const getYoutubeId = async () => {
+        try{
+            const {data: {items: trailerItem}} = await youtubeApi.searchForId(`${props.movie.title} Official Trailer`);
+            const {id: {videoId: trailerId}} = trailerItem[0];
+            setId(trailerId);
+        } catch (e){    
+            console.log(e);
+        } finally{
+            
+        }
+    }
+    useEffect(() => {
+        getYoutubeId();
+    }, [])
     
     return (
         <Container>
-            <ContainerBg bgImg={`https://image.tmdb.org/t/p/original/${props.movie.backdrop_path}`} />
+            <ContainerBg>
+                <Video 
+                    title="sample" 
+                    id="player" 
+                    type="text/html" 
+                    src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}`}
+                    frameborder="0"
+                />
+            </ContainerBg>
             <ContainerInfo>
                 <TagLine>{props.movie.tagline ? `"${props.movie.tagline}"` : `"Movie is always right"` }</TagLine>
                 <Title>{props.movie.title}</Title>
