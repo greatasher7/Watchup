@@ -1,0 +1,89 @@
+import React from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+    width: 100%;
+`;
+
+const Title = styled.h3`
+    font-size: 1.2rem;
+    margin-left: .5vw;
+`;
+
+const NoReview = styled.div`
+    margin-top: 4vh;
+    color: #ccc;
+    font-size: .8rem;
+    margin-left: 1vw;
+`;
+
+const Article = styled.article`
+    display: flex;
+    align-items: flex-start;
+    margin-top: 3.5vh;
+`;
+
+const ProfileImg = styled.span`
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    background-color: #333;
+    background-image: url(${props => props.img});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    border: 3px solid #fff;
+`;
+
+const ContentBox = styled.div`
+    width: 80%;
+    margin-left: 1%;
+
+`;
+
+const Name = styled.h4`
+    font-size: .8rem;
+    margin-bottom: 1vh;
+`;
+
+const Contents = styled.p`
+    font-size: .7rem;
+    line-height: 1.5;
+    color: #ccc;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 1.5vh;
+    border-radius: 20px;
+`;
+
+const Date = styled.span`
+    font-size: .6rem;
+    color: #999;
+    margin-left: 1vw;
+`;
+
+const DetailReview = ({reviewResult}) => {
+
+    return(
+        <Container>
+            <Title>Reviews</Title>
+            {reviewResult.length < 1 ? 
+                <NoReview>No Reviews...</NoReview> :
+                reviewResult.map(review => {
+                    return(
+                        <Article>
+                            <ProfileImg img={review.author_details.avatar_path ? `https://image.tmdb.org/t/p/w300/${review.author_details.avatar_path}` : ""} />
+                            <ContentBox>
+                                <Name>{review.author}</Name>
+                                <Contents>{`${review.content.substring(0, 300)}...`}</Contents>
+                                <Date>{review.updated_at.substring(0, 10)}</Date>
+                            </ContentBox>
+                        </Article>
+                    );
+                })
+            }
+        </Container>
+    )
+}
+
+export default DetailReview;
