@@ -28,14 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build",
-    "predeploy": "yarn run build",
-    "name": "my-package",
-    "scripts": {
-      "build": "babel src -d lib",
-      "test": "jest"
-    }
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -43,7 +36,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://greatasher7.github.io/watchup",
+  "homepage": "https://nostalgic-easley-65bf76.netlify.app",
   "browserslist": {
     "production": [
       ">0.2%",
