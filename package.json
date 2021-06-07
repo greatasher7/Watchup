@@ -37,6 +37,7 @@
       "react-app/jest"
     ]
   },
+  "homepage": "nostalgic-easley-65bf76.netlify.app",
   "browserslist": {
     "production": [
       ">0.2%",
