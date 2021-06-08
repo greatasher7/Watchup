@@ -40,7 +40,6 @@ const Tabs = styled.li`
     &:hover{
         color: #fff;
         box-shadow: 0 0 10px #fff;
-        
     }
 `;
 
@@ -58,30 +57,31 @@ const Container = styled.div`
 
 const Movie = ({match, location: {pathname}}) => {
 
+    console.log(pathname);
+    console.log(match.path);
+
     const [{nowPlaying, upComing, popular, topRated}, error, loading] = useGetMovie();
     return (
         <>
-            <Router>
-                <TabContainer>
-                    <TabList>
-                        <Tabs><CLink to={`${match.url}`}>Now Playing</CLink></Tabs>
-                        <Tabs><CLink to={`${match.url}/upcoming`}>Upcoming</CLink></Tabs>
-                        <Tabs><CLink to={`${match.url}/popular`}>Popular</CLink></Tabs>
-                        <Tabs><CLink to={`${match.url}/toprated`}>Top Rated</CLink></Tabs>
-                    </TabList>
-                </TabContainer>
-                {loading && <Loader />}
-                <>
-                    <Helmet><title>Movies | watchup</title></Helmet>
-                    <Container>
-                        <Route path={`${match.path}`} exact render={(props) => <MovieFrame movies={nowPlaying} title={`Now Playing Movies`} />} />
-                        <Route path={`${match.path}/upcoming`} render={(props) => <MovieFrame movies={upComing} title={`Upcoming Movies`} />} />
-                        <Route path={`${match.path}/popular`} render={(props) => <MovieFrame movies={popular} title={`Popular Movies`} />} />
-                        <Route path={`${match.path}/toprated`} render={(props) => <MovieFrame movies={topRated} title={`Top Rated Movies`} />} />
-                        {error && <Message title={error} />}
-                    </Container>
-                </>
-            </Router>   
+            <TabContainer>
+                <TabList>
+                    <Tabs current={pathname}><CLink to={`${match.url}`}>Now Playing</CLink></Tabs>
+                    <Tabs current={pathname}><CLink to={`${match.url}/upcoming`}>Upcoming</CLink></Tabs>
+                    <Tabs current={pathname}><CLink to={`${match.url}/popular`}>Popular</CLink></Tabs>
+                    <Tabs current={pathname}><CLink to={`${match.url}/toprated`}>Top Rated</CLink></Tabs>
+                </TabList>
+            </TabContainer>
+            {loading && <Loader />}
+            <>
+                <Helmet><title>Movies | watchup</title></Helmet>
+                <Container>
+                    <Route path={`${match.path}`} exact render={(props) => <MovieFrame movies={nowPlaying} title={`Now Playing Movies`} />} />
+                    <Route path={`${match.path}/upcoming`} render={(props) => <MovieFrame movies={upComing} title={`Upcoming Movies`} />} />
+                    <Route path={`${match.path}/popular`} render={(props) => <MovieFrame movies={popular} title={`Popular Movies`} />} />
+                    <Route path={`${match.path}/toprated`} render={(props) => <MovieFrame movies={topRated} title={`Top Rated Movies`} />} />
+                    {error && <Message title={error} />}
+                </Container>
+            </>
         </>
     );
 

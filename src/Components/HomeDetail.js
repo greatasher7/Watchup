@@ -12,13 +12,17 @@ const ContainerBg = styled.div`
     position: fixed;
     width: 100%;
     height: 100vh;
-    opacity: .3;
+    opacity: .1;
     z-index: -1;
+    overflow: hidden;
 `;
 
 const Video = styled.iframe`
-    width: 100%;
-    height: 100vh;
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
 `;
 
 const ContainerInfo = styled.div`
@@ -115,7 +119,6 @@ const HomeDetail = (props) => {
                     id="player" 
                     type="text/html" 
                     src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}`}
-                    frameborder="0"
                 />
             </ContainerBg>
             <ContainerInfo>

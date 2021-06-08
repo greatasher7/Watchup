@@ -10,15 +10,13 @@ import Detail from "Routes/Detail";
 const RouterComponent = () => (
     <Router>
         <Nav />
-        <Switch>
-            <Route path="/" exact component={Home}/>
-            <Route path="/movie" exact component={Movie}/>
-            <Route path="/tv" exact component={TV}/>
-            <Route path="/search" component={Search}/>
-            <Route path="/movie-detail/:id" component={Detail}/>
-            <Route path="/show-detail/:id" component={Detail}/>
-            <Redirect from="*" to="/"/>
-        </Switch>
+        <Route path="/" exact component={Home}/>
+        <Route path="/movie" exact component={Movie}/>
+        <Route path="/tv" exact component={TV}/>
+        <Route path="/search" component={Search}/>
+        <Route path="/movie-detail/:id" component={Detail}/>
+        <Route path="/show-detail/:id" component={Detail}/>
+        <Redirect from="*" to="/"/>
     </Router>
 );
 
