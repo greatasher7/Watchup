@@ -72,10 +72,10 @@ const TV = ({match}) => {
                 <>
                 <Helmet><title>TV Shows | watchup</title></Helmet>
                     <Container>
-                        <Route path={`${match.path}`} exact ><TVFrame contents={onTheAir} title="On The Air Shows" /></Route>
-                        <Route path={`${match.path}/airingToday`} ><TVFrame contents={airingToday} title="Airing Today Shows" /></Route>
-                        <Route path={`${match.path}/popular`} ><TVFrame contents={popular} title="Popular Shows" /></Route>
-                        <Route path={`${match.path}/toprated`} ><TVFrame contents={topRated} title="Top Rated Shows" /></Route>
+                        <Route path={`${match.path}`} exact render={(props) => <TVFrame shows={onTheAir} title={`On The Air Shows`} />} />
+                        <Route path={`${match.path}/airingToday`} render={(props) => <TVFrame shows={airingToday} title={`Airing Today Shows`} />} />
+                        <Route path={`${match.path}/popular`} render={(props) => <TVFrame shows={popular} title={`Popular Shows`} />} />
+                        <Route path={`${match.path}/toprated`} render={(props) => <TVFrame shows={topRated} title={`Top Rated Shows`} />} />
                         {error && <Message title={error} />}
                         <Route path="/show-detail/:id" component={Detail}/>
                     </Container>

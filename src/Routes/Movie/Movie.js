@@ -74,15 +74,14 @@ const Movie = ({match, location: {pathname}}) => {
                 <>
                     <Helmet><title>Movies | watchup</title></Helmet>
                     <Container>
-                        <Route path={`${match.path}`} exact ><MovieFrame contents={nowPlaying} title="Now Playing Movies" /></Route>
-                        <Route path={`${match.path}/upcoming`} ><MovieFrame contents={upComing} title="Upcoming Movies" /></Route>
-                        <Route path={`${match.path}/popular`} ><MovieFrame contents={popular} title="Popular Movies" /></Route>
-                        <Route path={`${match.path}/toprated`} ><MovieFrame contents={topRated} title="Top Rated Movies" /></Route>
+                        <Route path={`${match.path}`} exact render={(props) => <MovieFrame movies={nowPlaying} title={`Now Playing Movies`} />} />
+                        <Route path={`${match.path}/upcoming`} render={(props) => <MovieFrame movies={upComing} title={`Upcoming Movies`} />} />
+                        <Route path={`${match.path}/popular`} render={(props) => <MovieFrame movies={popular} title={`Popular Movies`} />} />
+                        <Route path={`${match.path}/toprated`} render={(props) => <MovieFrame movies={topRated} title={`Top Rated Movies`} />} />
                         {error && <Message title={error} />}
-                        <Route path="/movie-detail/:id" component={Detail}/>
                     </Container>
                 </>
-            </Router>
+            </Router>   
         </>
     );
 

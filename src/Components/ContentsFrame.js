@@ -3,12 +3,14 @@ import Poster from "Components/Poster";
 import Section from "Components/Section";
 
 
-export const MovieFrame = (props) => {
+export const MovieFrame = ({movies, title}) => {
+    console.log(movies);
+    console.log(title);
     return(
         <Fragment>
-            {props.contents && props.contents.length > 0 && (
-            <Section title={props.title}>
-                {props.contents.map(movie => (
+            {movies && movies.length > 0 && (
+            <Section title={title}>
+                {movies.map(movie => (
                     <Poster 
                         key={movie.id} 
                         id={movie.id} 
@@ -25,12 +27,12 @@ export const MovieFrame = (props) => {
     );
 }
 
-export const TVFrame = (props) => {
+export const TVFrame = ({shows, title}) => {
     return(
         <Fragment>
-            {props.contents && props.contents.length > 0 && (
-            <Section title={props.title}>
-                {props.contents.map(show => (
+            {shows && shows.length > 0 && (
+            <Section title={title}>
+                {shows.map(show => (
                     <Poster 
                         key = {show.id}
                         id = {show.id}
