@@ -50,7 +50,9 @@ const Container = styled.div`
     padding: 12vh 2vw;
 `;
 
-const TV = ({match}) => {
+const TV = ({match, location: {pathname}}) => {
+
+    console.log(pathname)
 
     return (
         <>
@@ -58,10 +60,10 @@ const TV = ({match}) => {
             <Router>
                 <TabContainer>
                     <TabList>
-                        <Tabs><CLink to={`${match.url}`}>Popular</CLink></Tabs>
-                        <Tabs><CLink to={`${match.url}/onTheAir`}>On The Air</CLink></Tabs>
-                        <Tabs><CLink to={`${match.url}/airingToday`}>Airing Today</CLink></Tabs>
-                        <Tabs><CLink to={`${match.url}/topRated`}>Top Rated</CLink></Tabs>
+                        <Tabs current={pathname === "/"}><CLink to={`${match.url}`}>Popular</CLink></Tabs>
+                        <Tabs current={pathname}><CLink to={`${match.url}/onTheAir`}>On The Air</CLink></Tabs>
+                        <Tabs current={pathname}><CLink to={`${match.url}/airingToday`}>Airing Today</CLink></Tabs>
+                        <Tabs current={pathname}><CLink to={`${match.url}/topRated`}>Top Rated</CLink></Tabs>
                     </TabList>
                 </TabContainer>
                 <Container>

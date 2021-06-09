@@ -57,17 +57,20 @@ const SLink = styled(Link)`
     }
 `;
 
-const Nav = ({location: {pathname}}) => (
-    <Header>
-        <Logo to="/" />
-        <List>
-            <Item current={pathname === "/"}><SLink to="/">Home</SLink></Item>
-            <Item current={pathname.includes("/movie")}><SLink to="/movie">Movies</SLink></Item>
-            <Item current={pathname.includes("/tv")}><SLink to="/tv">TV Show</SLink></Item>
-            <Item current={pathname.includes("/search")}><SLink to="/search">Search</SLink></Item>
-        </List>
-    </Header>
-);
+const Nav = ({location: {pathname}}) => {
+    console.log(pathname);
+    return(
+        <Header>
+            <Logo to="/" />
+            <List>
+                <Item current={pathname === "/"}><SLink to="/">Home</SLink></Item>
+                <Item current={pathname.includes("/movie")}><SLink to="/movie">Movies</SLink></Item>
+                <Item current={pathname.includes("/show")}><SLink to="/show">TV Show</SLink></Item>
+                <Item current={pathname.includes("/search")}><SLink to="/search">Search</SLink></Item>
+            </List>
+        </Header>
+    );
+}
 
 
 export default withRouter(Nav);

@@ -12,13 +12,13 @@ const useGetTV = (url) => {
     const getInitialData = async () => {
         try{
             let shows = null
-            if(url === "/tv"){
+            if(url === "/show"){
                 const {data: {results}} = await tvApi.popular(page);
                 shows = results;
-            } else if(url === "/tv/onTheAir"){
+            } else if(url === "/show/onTheAir"){
                 const {data: {results}} = await tvApi.onTheAir(page);
                 shows = results;
-            } else if(url === "/tv/airingToday"){
+            } else if(url === "/show/airingToday"){
                 const {data: {results}} = await tvApi.airingToday(page);
                 shows = results;
             } else{
@@ -36,13 +36,13 @@ const useGetTV = (url) => {
     const getMoreData = async () => {
         try{
             let newShows = null
-            if(url === "/tv"){
+            if(url === "/show"){
                 const {data: {results}} = await tvApi.popular(page);
                 newShows = results;
-            } else if(url === "/tv/onTheAir"){
+            } else if(url === "/show/onTheAir"){
                 const {data: {results}} = await tvApi.onTheAir(page);
                 newShows = results;
-            } else if(url === "/tv/airingToday"){
+            } else if(url === "/show/airingToday"){
                 const {data: {results}} = await tvApi.airingToday(page);
                 newShows = results;
             } else{
