@@ -25,7 +25,6 @@ const useDetail = ({location: {pathname}, match: {params: {id}}}) => {
                 castResult = castRequest.data.cast;
                 reviewResult = reviewRequest.data.results;
                 relatedResult = relatedRequest.data.results;
-                console.log(relatedResult);
                 setResult([detailResult, castResult, reviewResult, relatedResult]);
             } else{
                 const request = await tvApi.showDetail(parsedID);

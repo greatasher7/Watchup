@@ -1,11 +1,8 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import Helmet from "react-helmet";
-import useGetTV from "./useGetTV";
+import TVFrame from "./TVFrame";
 import styled from "styled-components";
-import Loader from "Components/Loader";
-import Message from "Components/Message";
-import {TVFrame} from "Components/ContentsFrame";
 import Detail from "Routes/Detail";
 
 
@@ -55,31 +52,25 @@ const Container = styled.div`
 
 const TV = ({match}) => {
 
-    const [{topRated, popular, airingToday, onTheAir}, error, loading] = useGetTV();
-
     return (
         <>
+            <Helmet><title>TV Shows | watchup</title></Helmet>
             <Router>
                 <TabContainer>
                     <TabList>
-                        <Tabs><CLink to={`${match.url}`}>On The Air</CLink></Tabs>
+                        <Tabs><CLink to={`${match.url}`}>Popular</CLink></Tabs>
+                        <Tabs><CLink to={`${match.url}/onTheAir`}>On The Air</CLink></Tabs>
                         <Tabs><CLink to={`${match.url}/airingToday`}>Airing Today</CLink></Tabs>
-                        <Tabs><CLink to={`${match.url}/popular`}>Popular</CLink></Tabs>
-                        <Tabs><CLink to={`${match.url}/toprated`}>Top Rated</CLink></Tabs>
+                        <Tabs><CLink to={`${match.url}/topRated`}>Top Rated</CLink></Tabs>
                     </TabList>
                 </TabContainer>
-                {loading && <Loader />}
-                <>
-                <Helmet><title>TV Shows | watchup</title></Helmet>
-                    <Container>
-                        <Route path={`${match.path}`} exact render={(props) => <TVFrame shows={onTheAir} title={`On The Air Shows`} />} />
-                        <Route path={`${match.path}/airingToday`} render={(props) => <TVFrame shows={airingToday} title={`Airing Today Shows`} />} />
-                        <Route path={`${match.path}/popular`} render={(props) => <TVFrame shows={popular} title={`Popular Shows`} />} />
-                        <Route path={`${match.path}/toprated`} render={(props) => <TVFrame shows={topRated} title={`Top Rated Shows`} />} />
-                        {error && <Message title={error} />}
-                        <Route path="/show-detail/:id" component={Detail}/>
-                    </Container>
-                </>
+                <Container>
+                    <Route path={`${match.path}`} exact render={(props) => <TVFrame {...props} title={`Popular Shows`} />} />
+                    <Route path={`${match.path}/onTheAir`} render={(props) => <TVFrame {...props} title={`On The Air Shows`} />} />
+                    <Route path={`${match.path}/airingToday`} render={(props) => <TVFrame {...props} title={`Airing Today Shows`} />} />
+                    <Route path={`${match.path}/topRated`} render={(props) => <TVFrame {...props} title={`Top Rated Shows`} />} />
+                    <Route path="/show-detail/:id" component={Detail}/>
+                </Container>
             </Router>
         </>
     );

@@ -92,7 +92,6 @@ const DetailLink = styled(Link)`
 
 
 const HomeDetail = (props) => {
-    console.log(props.movie);
 
     const [id, setId] = useState()
 
