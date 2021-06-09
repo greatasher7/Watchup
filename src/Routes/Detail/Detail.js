@@ -108,7 +108,7 @@ const Description = styled.p`
 const Detail = (props) => {
 
     const [loading, detailResult, castResult, reviewResult, relatedResult] = useDetail(props);
-
+    
     return loading ? 
         <>  
             <Helmet><title>Loading...</title></Helmet>
