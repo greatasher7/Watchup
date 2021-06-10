@@ -77,7 +77,6 @@ const Movie = ({match, location: {pathname}}) => {
             </Router>
         </>
     );
-
 };
 
 export default Movie;
