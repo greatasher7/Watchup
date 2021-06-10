@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import {youtubeApi} from "api"; 
 
 
@@ -55,7 +56,7 @@ const Iframe = ({title}) => {
             <Article>
                 <VideoTitle>Official Trailer 1</VideoTitle>
                 <Video 
-                    title="sample" 
+                    title="Official Trailer 1" 
                     id="player" 
                     type="text/html" 
                     src={`https://www.youtube.com/embed/${id[0]}`}
@@ -65,7 +66,7 @@ const Iframe = ({title}) => {
             <Article>
                 <VideoTitle>Official Trailer 2</VideoTitle>
                 <Video 
-                    title="sample" 
+                    title="Official Trailer 2" 
                     id="player" 
                     type="text/html" 
                     src={`https://www.youtube.com/embed/${id[1]}`}
@@ -75,7 +76,7 @@ const Iframe = ({title}) => {
             <Article>
                 <VideoTitle>OST</VideoTitle>
                 <Video 
-                    title="sample" 
+                    title="OST" 
                     id="player" 
                     type="text/html" 
                     src={`https://www.youtube.com/embed/${id[2]}`}
@@ -85,5 +86,9 @@ const Iframe = ({title}) => {
         </Container>
     );
 } 
+
+Iframe.propTypes = {
+    title: PropTypes.string.isRequired
+}
 
 export default Iframe;

@@ -23,8 +23,8 @@ const Message = ({text, color}) => (
 );
 
 Message.propTypes = {
-    text: Proptypes.string.isRequired,
-    color: Proptypes.string.isRequired
+    text: Proptypes.string,
+    color: Proptypes.string
 }
 
 export default Message;

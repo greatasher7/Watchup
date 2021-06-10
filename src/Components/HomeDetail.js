@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
-import {youtubeApi} from "api"; 
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import {youtubeApi} from "api"; 
 import {Link} from "react-router-dom";
 
 const Container = styled.div`
@@ -12,7 +13,7 @@ const ContainerBg = styled.div`
     position: fixed;
     width: 100%;
     height: 100vh;
-    opacity: .1;
+    opacity: .2;
     z-index: -1;
     overflow: hidden;
 `;
@@ -91,13 +92,13 @@ const DetailLink = styled(Link)`
 `;
 
 
-const HomeDetail = (props) => {
+const HomeDetail = ({movie}) => {
 
     const [id, setId] = useState()
 
     const getYoutubeId = async () => {
         try{
-            const {data: {items: trailerItem}} = await youtubeApi.searchForId(`${props.movie.title} Official Trailer`);
+            const {data: {items: trailerItem}} = await youtubeApi.searchForId(`${movie.title} Official Trailer`);
             const {id: {videoId: trailerId}} = trailerItem[0];
             setId(trailerId);
         } catch (e){    
@@ -113,7 +114,7 @@ const HomeDetail = (props) => {
     return (
         <Container>
             <ContainerBg>
-                <Video 
+                <Video
                     title="sample" 
                     id="player" 
                     type="text/html" 
@@ -121,18 +122,34 @@ const HomeDetail = (props) => {
                 />
             </ContainerBg>
             <ContainerInfo>
-                <TagLine>{props.movie.tagline ? `"${props.movie.tagline}"` : `"Movie is always right"` }</TagLine>
-                <Title>{props.movie.title}</Title>
+                <TagLine>{movie.tagline ? `"${movie.tagline}"` : `"Movie is always right"` }</TagLine>
+                <Title>{movie.title}</Title>
                 <InfoList>
-                    <Infos>{props.movie.genres.map((genre, index) => index === props.movie.genres.length -1 ? genre.name : genre.name + " · ")}</Infos>
-                    <Infos>{props.movie.release_date.slice(0, 4)} · {props.movie.runtime} min</Infos>
-                    <Infos>⭐️ {props.movie.vote_average}</Infos>
-                    <Infos><Description>{props.movie.overview}</Description></Infos>
+                    <Infos>{movie.genres.map((genre, index) => index === movie.genres.length -1 ? genre.name : genre.name + " · ")}</Infos>
+                    <Infos>{movie.release_date.slice(0, 4)} · {movie.runtime} min</Infos>
+                    <Infos>⭐️ {movie.vote_average}</Infos>
+                    <Infos><Description>{movie.overview}</Description></Infos>
                 </InfoList>
-                <DetailLink to={`/movie-detail/${props.movie.id}`}>Movie Detail</DetailLink>
+                <DetailLink to={`/movie-detail/${movie.id}`}>Movie Detail</DetailLink>
             </ContainerInfo>
         </Container>
     )
 };
+
+HomeDetail.propTypes = {
+    movie: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        tagline: PropTypes.string,
+        title: PropTypes.string.isRequired,
+        genres: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string
+        })).isRequired,
+        release_date: PropTypes.string.isRequired,
+        runtime: PropTypes.number.isRequired,
+        vote_average: PropTypes.number.isRequired,
+        overview: PropTypes.string.isRequired,
+    })
+}
 
 export default HomeDetail;

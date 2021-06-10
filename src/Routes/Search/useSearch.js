@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {tvApi, moviesApi} from 'api';
 
 const useSearch = () => {

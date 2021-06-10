@@ -58,7 +58,6 @@ const SLink = styled(Link)`
 `;
 
 const Nav = ({location: {pathname}}) => {
-    console.log(pathname);
     return(
         <Header>
             <Logo to="/" />

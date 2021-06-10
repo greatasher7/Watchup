@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 
@@ -61,6 +62,7 @@ const Year = styled.span`
 
 const DetailRelated = ({relatedResult}) => {
 
+    console.log(relatedResult);
     return(
         <Container>
             <Title>Related Videos</Title>
@@ -75,7 +77,7 @@ const DetailRelated = ({relatedResult}) => {
                             <Article>
                                 <Poster src={result.poster_path ? `https://image.tmdb.org/t/p/w300/${result.poster_path}` : require("assets/noPosterSmall.PNG").default}/>
                                 <Name>{isMovie ? result.title : result.name}</Name>
-                                <Year>{(result.release_date ? result.release_date : result.first_air_date).substring(0, 4)}</Year>
+                                <Year>{result.release_date ? result.release_date.substring(0, 4) : result.first_air_date ? result.first_air_date.substring(0, 4) : ""}</Year>
                             </Article>
                         </DLink>
                     );
@@ -83,6 +85,17 @@ const DetailRelated = ({relatedResult}) => {
             }
         </Container>
     )
+}
+
+DetailRelated.propTypes = {
+    relatedResult: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string,
+        name: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        poster_path: PropTypes.string,
+        release_date: PropTypes.string,
+        first_air_date: PropTypes.string
+    }))
 }
 
 export default DetailRelated;

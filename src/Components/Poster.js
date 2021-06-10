@@ -73,7 +73,7 @@ const Year = styled.span`
 `;
 
 const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) => (
-
+    
     <PLink to={isMovie? `/movie-detail/${id}` : `/show-detail/${id}`}>
         <Container>
             <ImageContainer>
@@ -96,9 +96,9 @@ Poster.propTypes = {
     id: PropTypes.number.isRequired,
     imageUrl: PropTypes.string,
     title: PropTypes.string.isRequired,
-    rating: PropTypes.number,
-    year: PropTypes.number,
-    isMovie: PropTypes.bool
+    rating: PropTypes.number.isRequired,
+    year: PropTypes.string.isRequired,
+    isMovie: PropTypes.bool.isRequired
 }
 
 export default Poster;

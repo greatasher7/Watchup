@@ -135,16 +135,16 @@ const Detail = (props) => {
                         </Data>
                     </Section>
                     <Section>
-                        <DetailIframe title ={detailResult.title ? detailResult.title : detailResult.name} />
+                        <DetailIframe key={props.match.params.id + "Iframe"} title ={detailResult.title ? detailResult.title : detailResult.name} />
                     </Section>
                     <Section>
-                        <DetailCredit castResult = {castResult} />
+                        <DetailCredit key={props.match.params.id + "Credit"} castResult = {castResult} />
                     </Section>
                     <Section>
-                        <DetailReview reviewResult = {reviewResult}/>
+                        <DetailReview key={props.match.params.id + "Review"} reviewResult = {reviewResult}/>
                     </Section>
                     <Section>
-                        <DetailRelated relatedResult = {relatedResult} />
+                        <DetailRelated key={props.match.params.id + "Related"} relatedResult = {relatedResult} />
                     </Section>
                 </ContentCover>
             </Container>

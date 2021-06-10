@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -67,6 +68,14 @@ const DetailCredit = ({castResult}) => {
             </Container>
         </>
     )
+}
+
+DetailCredit.propTypes = {
+    castResult: PropTypes.arrayOf(PropTypes.shape({
+        profile_path: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        character: PropTypes.string.isRequired
+    }))
 }
 
 export default DetailCredit;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import useGetTV from "./useGetTV";
 import Loader from "Components/Loader";
 import Message from "Components/Message";
@@ -30,4 +31,8 @@ export default function TVFrame ({match: {url}, title}) {
                 {error && <Message title={error} color="red" />}
             </>
     );
+}
+
+TVFrame.propTypes = {
+    title: PropTypes.string.isRequired
 }

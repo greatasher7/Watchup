@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -84,6 +85,17 @@ const DetailReview = ({reviewResult}) => {
             }
         </Container>
     )
+}
+
+DetailReview.propTypes = {
+    reviewResult: PropTypes.arrayOf(PropTypes.shape({
+        author_details: PropTypes.shape({
+            avatar_path: PropTypes.string
+        }),
+        author: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired,
+        updated_at: PropTypes.string.isRequired
+    }))
 }
 
 export default DetailReview;

@@ -15,8 +15,8 @@ const RouterComponent = () => (
             <Route path="/movie" component={Movie}/>
             <Route path="/show" component={TV}/>
             <Route path="/search" component={Search}/>
-            <Route path="/movie-detail/:id" component={Detail}/>
-            <Route path="/show-detail/:id" component={Detail}/>
+            <Route path="/movie-detail/:id" render={props => <Detail {...props} key={props.match.params.id}/>}/>
+            <Route path="/show-detail/:id" render={props => <Detail {...props} key={props.match.params.id}/>}/>
             <Redirect from="*" to="/"/>
         </Switch>
     </BrowserRouter>
