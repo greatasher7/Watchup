@@ -124,7 +124,7 @@ const Detail = (props) => {
                         <Data>
                             <Title>{detailResult.title ? detailResult.title : detailResult.name}</Title>
                             <InfoContainer>
-                                <Info>{detailResult.release_date ? detailResult.release_date.substring(0, 4) : detailResult.first_air_date.substring(0, 4)}</Info>
+                                <Info>{detailResult.release_date ? detailResult.release_date.substring(0, 4) : detailResult.first_air_date ? detailResult.first_air_date.substring(0, 4) : "-"}</Info>
                                 <Divider>·</Divider>
                                 <Info>{detailResult.runtime ? `${detailResult.runtime} min` : `${detailResult.seasons.length} seasons & ${detailResult.seasons[detailResult.seasons.length-1].episode_count} episodes`}</Info>
                                 <Divider>·</Divider>

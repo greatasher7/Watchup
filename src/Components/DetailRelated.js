@@ -62,7 +62,6 @@ const Year = styled.span`
 
 const DetailRelated = ({relatedResult}) => {
 
-    console.log(relatedResult);
     return(
         <Container>
             <Title>Related Videos</Title>
@@ -73,11 +72,11 @@ const DetailRelated = ({relatedResult}) => {
                     }
                     const isMovie = result.title;
                     return(
-                        <DLink to={isMovie ? `/movie-detail/${result.id}` : `/show-detail/${result.id}`}>
+                        <DLink key={result.id} to={isMovie ? `/movie-detail/${result.id}` : `/show-detail/${result.id}`}>
                             <Article>
                                 <Poster src={result.poster_path ? `https://image.tmdb.org/t/p/w300/${result.poster_path}` : require("assets/noPosterSmall.PNG").default}/>
                                 <Name>{isMovie ? result.title : result.name}</Name>
-                                <Year>{result.release_date ? result.release_date.substring(0, 4) : result.first_air_date ? result.first_air_date.substring(0, 4) : ""}</Year>
+                                <Year>{result.release_date ? result.release_date.substring(0, 4) : result.first_air_date ? result.first_air_date.substring(0, 4) : "-"}</Year>
                             </Article>
                         </DLink>
                     );

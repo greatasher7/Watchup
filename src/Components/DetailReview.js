@@ -72,7 +72,7 @@ const DetailReview = ({reviewResult}) => {
                 <NoReview>No Reviews...</NoReview> :
                 reviewResult.map(review => {
                     return(
-                        <Article>
+                        <Article key={review.id}>
                             <ProfileImg img={review.author_details.avatar_path ? `https://image.tmdb.org/t/p/w300/${review.author_details.avatar_path}` : ""} />
                             <ContentBox>
                                 <Name>{review.author}</Name>

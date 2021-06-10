@@ -48,7 +48,7 @@ const Character = styled.span`
 `;
 
 const DetailCredit = ({castResult}) => {
-    
+
     return(
         <> 
             <Container>
@@ -58,7 +58,7 @@ const DetailCredit = ({castResult}) => {
                         return false; 
                     }
                     return(
-                        <Article>
+                        <Article key={cast.id}>
                             <ProfileImg src={cast.profile_path ? `https://image.tmdb.org/t/p/w300/${cast.profile_path}` : require("assets/noCastSmall.PNG").default}/>
                             <Name>{cast.name}</Name>
                             <Character>{cast.character}</Character>
