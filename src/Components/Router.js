@@ -17,7 +17,7 @@ const RouterComponent = () => (
             <Route path="/search" component={Search}/>
             <Route path="/movie-detail/:id" component={Detail}/>
             <Route path="/show-detail/:id" component={Detail}/>
-            {/* <Redirect from="*" to="/"/> */}
+            <Redirect from="*" to="/"/>
         </Switch>
     </BrowserRouter>
 );

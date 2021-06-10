@@ -1,9 +1,8 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {Route, Link} from "react-router-dom";
 import Helmet from "react-helmet";
 import TVFrame from "./TVFrame";
 import styled from "styled-components";
-import Detail from "Routes/Detail";
 
 
 const TabContainer = styled.div`
@@ -30,7 +29,8 @@ const TabList = styled.ul`
 `;
 
 const Tabs = styled.li`
-    color: #999;
+    color: ${props => props.current ? "#fff" : "#999"};
+    box-shadow: ${props => props.current ? "0 0 10px #fff" : "none"};
     border-radius: 10px;
     &:hover{
         color: #fff;
@@ -52,28 +52,23 @@ const Container = styled.div`
 
 const TV = ({match, location: {pathname}}) => {
 
-    console.log(pathname)
-
     return (
         <>
             <Helmet><title>TV Shows | watchup</title></Helmet>
-            <Router>
-                <TabContainer>
-                    <TabList>
-                        <Tabs current={pathname === "/"}><CLink to={`${match.url}`}>Popular</CLink></Tabs>
-                        <Tabs current={pathname}><CLink to={`${match.url}/onTheAir`}>On The Air</CLink></Tabs>
-                        <Tabs current={pathname}><CLink to={`${match.url}/airingToday`}>Airing Today</CLink></Tabs>
-                        <Tabs current={pathname}><CLink to={`${match.url}/topRated`}>Top Rated</CLink></Tabs>
-                    </TabList>
-                </TabContainer>
-                <Container>
-                    <Route path={`${match.path}`} exact render={(props) => <TVFrame {...props} title={`Popular Shows`} />} />
-                    <Route path={`${match.path}/onTheAir`} render={(props) => <TVFrame {...props} title={`On The Air Shows`} />} />
-                    <Route path={`${match.path}/airingToday`} render={(props) => <TVFrame {...props} title={`Airing Today Shows`} />} />
-                    <Route path={`${match.path}/topRated`} render={(props) => <TVFrame {...props} title={`Top Rated Shows`} />} />
-                    <Route path="/show-detail/:id" component={Detail}/>
-                </Container>
-            </Router>
+            <TabContainer>
+                <TabList>
+                    <Tabs current={pathname === "/show"}><CLink to={`/show`}>Popular</CLink></Tabs>
+                    <Tabs current={pathname === "/show/ontheair"}><CLink to={`/show/ontheair`}>On The Air</CLink></Tabs>
+                    <Tabs current={pathname === "/show/airingtoday"}><CLink to={`/show/airingtoday`}>Airing Today</CLink></Tabs>
+                    <Tabs current={pathname === "/show/toprated"}><CLink to={`/show/toprated`}>Top Rated</CLink></Tabs>
+                </TabList>
+            </TabContainer>
+            <Container>
+                <Route path={`${match.path}`} exact render={(props) => <TVFrame {...props} title={`Popular Shows`} />} />
+                <Route path={`${match.path}/ontheair`} render={(props) => <TVFrame {...props} title={`On The Air Shows`} />} />
+                <Route path={`${match.path}/airingtoday`} render={(props) => <TVFrame {...props} title={`Airing Today Shows`} />} />
+                <Route path={`${match.path}/toprated`} render={(props) => <TVFrame {...props} title={`Top Rated Shows`} />} />
+            </Container>
         </>
     );
 };
