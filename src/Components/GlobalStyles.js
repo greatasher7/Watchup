@@ -6,6 +6,9 @@ const GlobalStyles = createGlobalStyle`
     html{
         font-size: 2vh;
         letter-spacing: .05rem;
+        @media screen and (max-width: 480px){
+            font-size: 3.5vw;
+        }
     }
     a{
         text-decoration: none;
@@ -13,11 +16,11 @@ const GlobalStyles = createGlobalStyle`
     }
     *, *::before, *::after{
         box-sizing: border-box;
-        color: white;
     }
     body{
         background-color: #111;
         font-family: 'Poppins', sans-serif;
+        color: white;
     }
 `;
  

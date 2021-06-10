@@ -29,6 +29,10 @@ const Image = styled.div`
     &:hover{
         box-shadow: 0px 0px 15px #e6bd0a;
     }
+    @media screen and (max-width: 480px){
+        height: 110px;
+        border-radius: 10px;
+    }
 `;
 
 const Rating = styled.span`

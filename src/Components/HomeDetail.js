@@ -7,6 +7,9 @@ import {Link} from "react-router-dom";
 const Container = styled.div`
     width: 100%;
     height: 75vh;
+    @media screen and (max-width: 480px){
+        height: 60vh;
+    }  
 `;
 
 const ContainerBg = styled.div`
@@ -40,6 +43,10 @@ const ContainerInfo = styled.div`
         from{opacity: 0; left: -3rem;}
         to{opacity: 1; left: 0;}
     }
+    @media screen and (max-width: 480px){
+        padding: 0 4vw;
+        padding-top: 15vh;
+    }
 `;
 
 const TagLine = styled.h1`
@@ -49,12 +56,19 @@ const TagLine = styled.h1`
     color: #aaa;
     margin-bottom: 5vh;
     margin-left: -.5vw;
+    @media screen and (max-width: 480px){
+        line-height: 1.3;
+        margin-bottom: 3vh;
+    }
     
 `;
 
 const Title = styled.h2`
     font-size: 1.4rem;
     margin-bottom: 2.5vh;
+    @media screen and (max-width: 480px){
+        line-height: 1.3;
+    }
 `;
 
 const InfoList = styled.ul`
@@ -73,6 +87,9 @@ const Description = styled.p`
     font-weight: lighter;
     font-size: .9rem;
     margin-top: 2vh;
+    @media screen and (max-width: 480px){
+        display: none;
+    }
 `;
 
 const DetailLink = styled(Link)`
@@ -88,6 +105,9 @@ const DetailLink = styled(Link)`
     transition: opacity .5s;
     &:hover{
         opacity: .7;
+    }
+    @media screen and (max-width: 480px){
+        width: 30vw;
     }
 `;
 

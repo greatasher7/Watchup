@@ -25,6 +25,10 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, 160px);
   justify-content: space-between;
   grid-gap: 15px;
+
+  @media screen and (max-width: 480px){
+    grid-template-columns: repeat(auto-fit, 21.5%);
+  }
 `;
 
 const Section = ({ title, children }) => (

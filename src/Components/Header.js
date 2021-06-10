@@ -1,6 +1,8 @@
 import React from "react";
 import {Link, withRouter} from "react-router-dom";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faTv, faVideo, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Header = styled.header`
     display: flex;
@@ -16,6 +18,10 @@ const Header = styled.header`
     background-color: rgba(10, 10, 10, .7);
     backdrop-filter: blur(10px);
     z-index: 1000;
+
+    @media screen and (max-width: 480px){
+        align-items: center;
+    }
 `;
 
 const Logo = styled(Link)`
@@ -28,12 +34,20 @@ const Logo = styled(Link)`
     background-repeat: no-repeat;
     background-size: 70%;
     background-position: center;
+
+    @media screen and (max-width: 480px){
+        display: none;
+    }
 `;
 
 const List = styled.ul`
     height: 100%;
     display: flex;
     list-style: none;
+
+    @media screen and (max-width: 480px){
+        width: 70%;
+    }
 `;
 
 const Item = styled.li`
@@ -45,6 +59,22 @@ const Item = styled.li`
     box-sizing: border-box;
     font-size: .9rem;
     color: ${props => props.current ? "#e6bd0a" : ""};
+    .mobileIcon{
+        display: none;
+    }
+    strong{
+        display: inline-block;
+    }
+
+    @media screen and (max-width: 480px){
+        font-size: 1.3rem;
+        .mobileIcon{
+            display: block;
+        }
+        strong{
+            display: none;
+        }
+    }
 `;
 
 const SLink = styled(Link)`
@@ -62,10 +92,10 @@ const Nav = ({location: {pathname}}) => {
         <Header>
             <Logo to="/" />
             <List>
-                <Item current={pathname === "/"}><SLink to="/">Home</SLink></Item>
-                <Item current={pathname.includes("/movie")}><SLink to="/movie">Movies</SLink></Item>
-                <Item current={pathname.includes("/show")}><SLink to="/show">TV Show</SLink></Item>
-                <Item current={pathname.includes("/search")}><SLink to="/search">Search</SLink></Item>
+                <Item current={pathname === "/"}><SLink to="/"><strong>Home</strong><FontAwesomeIcon icon={faHome} className="mobileIcon" /></SLink></Item>
+                <Item current={pathname.includes("/movie")}><SLink to="/movie"><strong>Movies</strong><FontAwesomeIcon icon={faVideo} className="mobileIcon" /></SLink></Item>
+                <Item current={pathname.includes("/show")}><SLink to="/show"><strong>TV Show</strong><FontAwesomeIcon icon={faTv} className="mobileIcon" /></SLink></Item>
+                <Item current={pathname.includes("/search")}><SLink to="/search"><strong>Search</strong><FontAwesomeIcon icon={faSearch} className="mobileIcon" /></SLink></Item>
             </List>
         </Header>
     );
