@@ -11,6 +11,12 @@ const TabContainer = styled.div`
     position: relative;
     top: 15vh;
     margin-bottom: 10vh;
+    @media screen and (max-width: 1024px){
+        top: 13vh;
+    }
+    @media screen and (max-width: 480px){
+        top: 15vh;
+    }
 `;
 
 const TabList = styled.ul`
@@ -27,6 +33,12 @@ const TabList = styled.ul`
     @keyframes appearMovieTab {
         from{opacity: 0}
         to{opacity: 1}
+    }
+    @media screen and (max-width: 1024px){
+        width: 80vw;
+    }
+    @media screen and (max-width: 480px){
+        width: 90vw;
     }
 `;
 
@@ -45,10 +57,19 @@ const CLink = styled(Link)`
     font-weight: lighter;
     font-size: .8rem;
     padding: 1vh 2vw;
+    @media screen and (max-width: 480px){
+        font-size: .6rem;
+    }
 `;
 
 const Container = styled.div`
     padding: 12vh 2vw;
+    @media screen and (max-width: 1024px){
+        padding-top: 10vh;
+    }
+    @media screen and (max-width: 480px){
+        padding-top: 12vh;
+    }
 `;
 
 const Movie = ({match, location: {pathname}}) => {

@@ -43,6 +43,9 @@ const ContainerInfo = styled.div`
         from{opacity: 0; left: -3rem;}
         to{opacity: 1; left: 0;}
     }
+    @media screen and (max-width: 1024px){
+        padding-top: 13vh;
+    }
     @media screen and (max-width: 480px){
         padding: 0 4vw;
         padding-top: 15vh;
@@ -64,7 +67,7 @@ const TagLine = styled.h1`
 `;
 
 const Title = styled.h2`
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 2.5vh;
     @media screen and (max-width: 480px){
         line-height: 1.3;
@@ -106,6 +109,9 @@ const DetailLink = styled(Link)`
     &:hover{
         opacity: .7;
     }
+    @media screen and (max-width: 1024px){
+        width: 25vw;
+    }
     @media screen and (max-width: 480px){
         width: 30vw;
     }
@@ -115,14 +121,15 @@ const DetailLink = styled(Link)`
 const HomeDetail = ({movie}) => {
 
     const [id, setId] = useState()
+    const [error, setError] = useState(true);
 
     const getYoutubeId = async () => {
         try{
             const {data: {items: trailerItem}} = await youtubeApi.searchForId(`${movie.title} Official Trailer`);
             const {id: {videoId: trailerId}} = trailerItem[0];
             setId(trailerId);
-        } catch (e){    
-            console.log(e);
+        } catch (e){
+            setError(e);
         } finally{
             
         }
@@ -137,8 +144,8 @@ const HomeDetail = ({movie}) => {
                 <Video
                     title="sample" 
                     id="player" 
-                    type="text/html" 
-                    src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}`}
+                    type="text/html"
+                    src={error ? "https://www.youtube.com/embed/66Ne5dVDfLM?autoplay=1&mute=1&loop=1&start=1" : `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}`}
                 />
             </ContainerBg>
             <ContainerInfo>

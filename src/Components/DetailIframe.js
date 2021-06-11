@@ -19,8 +19,14 @@ const Article = styled.article`
 
 const VideoTitle = styled.h4`
     margin-left: .5vw;
-    margin-bottom: 1vh;
-    font-size: .9rem;
+    margin-bottom: .5rem;
+    padding: .5rem 0;
+    font-size: 1rem;
+    @media screen and (max-width: 480px){
+        font-size: .7rem;
+        margin-bottom: 0;
+        margin-left: .7vw;
+    }
 `;
 
 const Video = styled.iframe`

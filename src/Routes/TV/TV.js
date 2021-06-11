@@ -11,6 +11,12 @@ const TabContainer = styled.div`
     position: relative;
     top: 15vh;
     margin-bottom: 10vh;
+    @media screen and (max-width: 1024px){
+        top: 13vh;
+    }
+    @media screen and (max-width: 480px){
+        top: 15vh;
+    }
 `;
 
 const TabList = styled.ul`
@@ -19,12 +25,20 @@ const TabList = styled.ul`
     align-items: center;
     width: 50vw;
     height: 6vh;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(to right, #333, #ccc, #333);
+    border-image-slice: 1;
     position: relative;
-    animation: appearShowTab 3s ease-in-out;
-    @keyframes appearShowTab {
+    animation: appearMovieTab 3s ease-in-out;
+    @keyframes appearMovieTab {
         from{opacity: 0}
         to{opacity: 1}
+    }
+    @media screen and (max-width: 1024px){
+        width: 80vw;
+    }
+    @media screen and (max-width: 480px){
+        width: 90vw;
     }
 `;
 
@@ -35,7 +49,6 @@ const Tabs = styled.li`
     &:hover{
         color: #fff;
         box-shadow: 0 0 10px #fff;
-        
     }
 `;
 
@@ -44,10 +57,19 @@ const CLink = styled(Link)`
     font-weight: lighter;
     font-size: .8rem;
     padding: 1vh 2vw;
+    @media screen and (max-width: 480px){
+        font-size: .6rem;
+    }
 `;
 
 const Container = styled.div`
     padding: 12vh 2vw;
+    @media screen and (max-width: 1024px){
+        padding-top: 10vh;
+    }
+    @media screen and (max-width: 480px){
+        padding-top: 12vh;
+    }
 `;
 
 const TV = ({match, location: {pathname}}) => {

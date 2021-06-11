@@ -6,6 +6,7 @@ import styled from "styled-components";
 const Container = styled.div`
     width: 100%;
     display: grid;
+    grid-row-gap: 2rem;
     grid-template-columns: repeat(6, 1fr);
     justify-content: space-between;
 `;
@@ -24,7 +25,7 @@ const NoRelated = styled.span`
 `;
 
 const DLink = styled(Link)`
-    margin-top: 3vh;
+
 `;
 
 const Article = styled.article`
@@ -36,10 +37,19 @@ const Article = styled.article`
 
 const Poster = styled.img`
     display: block;
-    width: 80%;
+    width: 85%;
+    height: 16rem;
     border-radius: 20px;
     &:hover{
         box-shadow: 0px 0px 15px #e6bd0a;
+    }
+    @media screen and (max-width: 1024px){
+        border-radius: 10px;
+        height: 8rem;
+    }
+    @media screen and (max-width: 480px){
+        border-radius: 5px;
+        height: 5.5rem;
     }
 `;
 
@@ -49,6 +59,12 @@ const Name = styled.h4`
     text-align: center;
     font-size: .7rem;
     margin-top: 1.3vh;
+    @media screen and (max-width: 1024px){
+        font-size: .6rem;
+    }
+    @media screen and (max-width: 480px){
+        display: none;
+    }
 `;
 
 const Year = styled.span`
@@ -58,6 +74,9 @@ const Year = styled.span`
     font-size: .6rem;
     color: #aaa;
     margin-top: .8vh;
+    @media screen and (max-width: 480px){
+        display: none;
+    }
 `;
 
 const DetailRelated = ({relatedResult}) => {

@@ -19,8 +19,16 @@ const Header = styled.header`
     backdrop-filter: blur(10px);
     z-index: 1000;
 
-    @media screen and (max-width: 480px){
+
+    @media screen and (max-width: 1024px){
         align-items: center;
+        justify-content: flex-end;
+        padding-right: 1rem;
+    }
+
+    @media screen and (max-width: 480px){
+        justify-content: center;
+        padding-right: 0;
     }
 `;
 
@@ -57,13 +65,16 @@ const Item = styled.li`
     border-bottom: 3px solid ${props => props.current ? "#e6bd0a" : "transparent"};
     transition: border-bottom .5s ease-in-out, color .5s ease-in-out;
     box-sizing: border-box;
-    font-size: .9rem;
     color: ${props => props.current ? "#e6bd0a" : ""};
     .mobileIcon{
         display: none;
     }
     strong{
         display: inline-block;
+    }
+
+    @media screen and (max-width: 1024px){
+        width: 6rem;
     }
 
     @media screen and (max-width: 480px){

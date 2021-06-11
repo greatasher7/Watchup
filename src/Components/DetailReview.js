@@ -39,8 +39,7 @@ const ProfileImg = styled.span`
 
 const ContentBox = styled.div`
     width: 80%;
-    margin-left: 1%;
-
+    margin-left: 1rem;
 `;
 
 const Name = styled.h4`
@@ -55,12 +54,20 @@ const Contents = styled.p`
     background-color: rgba(0, 0, 0, .5);
     padding: 1.5vh;
     border-radius: 20px;
+    &.tabletReview{display: none;}
+    @media screen and (max-width: 1024px){
+        &.tabletReview{display: block;}
+        &.pcReview{display: none;}
+        border-radius: 10px;
+    }
 `;
 
 const Date = styled.span`
-    font-size: .6rem;
+    display: block;
+    font-size: .7rem;
     color: #999;
-    margin-left: 1vw;
+    margin-left: .5rem;
+    margin-top: .5rem;
 `;
 
 const DetailReview = ({reviewResult}) => {
@@ -76,7 +83,8 @@ const DetailReview = ({reviewResult}) => {
                             <ProfileImg img={review.author_details.avatar_path ? `https://image.tmdb.org/t/p/w300/${review.author_details.avatar_path}` : ""} />
                             <ContentBox>
                                 <Name>{review.author}</Name>
-                                <Contents>{`${review.content.substring(0, 300)}...`}</Contents>
+                                <Contents className="pcReview">{`${review.content.substring(0, 300)}...`}</Contents>
+                                <Contents className="tabletReview">{`${review.content.substring(0, 100)}...`}</Contents>
                                 <Date>{review.updated_at.substring(0, 10)}</Date>
                             </ContentBox>
                         </Article>

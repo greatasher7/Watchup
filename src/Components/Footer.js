@@ -11,27 +11,65 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     overflow: hidden;
+    @media screen and (max-width: 1024px){
+        height: 300px;
+    } 
+    @media screen and (max-width: 480px){
+        height: 400px;
+    } 
 `;
 
 const ContainerCenter = styled.div`
     width: 65%;
     display: grid;
     grid-template-columns: .5fr 2.5fr 1fr 1fr;
+    @media screen and (max-width: 1024px){
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr .5fr 2fr;
+        padding: 20px 0;
+    }
+    @media screen and (max-width: 480px){
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: .8fr 1.5fr 1.5fr 1.5fr;
+        padding: 20px 0;
+    }
 `;
 
 const FooterCont = styled.div`
     padding: 0 2vw;
-    
+    @media screen and (max-width: 1024px){
+        &.logo{grid-column: 1/3;}
+        &.copy{grid-column: 1/3;}
+        &.follow{display: flex; justify-content: center; flex-direction: column;}
+        &.app{display: flex; justify-content: center; flex-direction: column;}
+    }
+    @media screen and (max-width: 480px){
+        &.logo{grid-column: 1/2;}
+        &.copy{grid-column: 1/2;}
+        &.follow{}
+        &.app{}
+    }
 `;
 
 const LogoContainer = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
+    @media screen and (max-width: 1024px){
+        justify-content: center;
+    }
 `;
 
 const LogoImage = styled.img`
     width: 7vw;
+    @media screen and (max-width: 1024px){
+        width: 15vw;
+    }
+    @media screen and (max-width: 480px){
+        width: 25vw;
+    }
 `;
 
 const Copyright = styled.p`
@@ -42,6 +80,13 @@ const Copyright = styled.p`
     letter-spacing: .05rem;
     display: flex;
     align-items: center;
+    @media screen and (max-width: 1024px){
+        padding: 0 5rem;
+        text-align: center;
+    }
+    @media screen and (max-width: 1024px){
+        padding: 0 2rem;
+    }
 `;
 
 const FooterTitle = styled.h4`
@@ -49,12 +94,21 @@ const FooterTitle = styled.h4`
     color: #ccc;
     font-weight: 500;
     padding-top: 3vh;
+    @media screen and (max-width: 1024px){
+        text-align: center;
+        padding-top: 0;
+        margin-bottom: 2vh;
+    }
 `;
 
 const FollowUsList = styled.ul`
     display: flex;
     margin-top: 1.5vh;
     margin-left: -5px;
+    @media screen and (max-width: 1024px){
+        justify-content: center;
+        margin-top: 0;
+    }
 `;
 
 const FollowUs = styled.li`
@@ -83,11 +137,21 @@ const LinkToFollow = styled.a`
 const AppDownloadList = styled.ul`
     margin-top: 1.5vh;
     margin-left: -5px;
+    @media screen and (max-width: 1024px){
+        display: flex;
+        justify-content: center;
+        margin-top: 0;
+    }
 `;
 
 const AppDownload = styled.li`
     &:first-child{
         margin-bottom: .5vh;
+    }
+    @media screen and (max-width: 1024px){
+        &:first-child{
+        margin-right: 1vw;
+    }
     }
 `;
 
@@ -105,11 +169,21 @@ const LinkToApp = styled.a`
     &:hover{
         background-color: #e6bd0a;
     }
+    @media screen and (max-width: 1024px){
+        width: 15vw;
+    }
+    @media screen and (max-width: 480px){
+        width: 30vw;
+        padding-left: 3vw;
+    }
 `;
 
 const AppString = styled.span`
     margin-left: .7vw;
     font-size: .6rem;
+    @media screen and (max-width: 480px){
+        margin-left: 2vw;
+    }
 `;
 
 const handleClick = (e) => {
@@ -121,18 +195,18 @@ const Footer = () => {
         <>
             <Container>
                 <ContainerCenter>
-                    <FooterCont>
+                    <FooterCont className="logo">
                         <LogoContainer>
                             <LogoImage src={require("assets/logo.png").default} />
                         </LogoContainer>
                     </FooterCont>
-                    <FooterCont>
+                    <FooterCont className="copy">
                         <Copyright>
                             © 2021 WATCHUP. All Rights Reserved. All videos and shows on this platform are 
                             trademarks of, and all related images and content are the property of, WATCHUP Inc.
                         </Copyright>
                     </FooterCont>
-                    <FooterCont>
+                    <FooterCont className="follow">
                         <FooterTitle>Follow Us</FooterTitle>
                         <FollowUsList>
                             <FollowUs><LinkToFollow href="" onClick={handleClick}><FontAwesomeIcon icon={faFacebookF} /></LinkToFollow></FollowUs>
@@ -141,7 +215,7 @@ const Footer = () => {
                             <FollowUs><LinkToFollow href="" onClick={handleClick}><FontAwesomeIcon icon={faGithub} /></LinkToFollow></FollowUs>
                         </FollowUsList>
                     </FooterCont>
-                    <FooterCont>
+                    <FooterCont className="app">
                         <FooterTitle>Get App</FooterTitle>
                         <AppDownloadList>
                             <AppDownload><LinkToApp href="" onClick={handleClick}><FontAwesomeIcon icon={faAppStoreIos} /><AppString>App Store</AppString></LinkToApp></AppDownload>

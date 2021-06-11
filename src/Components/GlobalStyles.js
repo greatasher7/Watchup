@@ -4,8 +4,11 @@ import reset from "styled-reset";
 const GlobalStyles = createGlobalStyle`
     ${reset};
     html{
-        font-size: 2vh;
+        font-size: 1vw;
         letter-spacing: .05rem;
+        @media screen and (max-width: 1024px){
+            font-size: 2vw;
+        }
         @media screen and (max-width: 480px){
             font-size: 3.5vw;
         }

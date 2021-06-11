@@ -61,6 +61,21 @@ const Section = styled.section`
     &:last-child{
         margin-bottom: 15vh;
     }
+    &.tabletDesc{display: none}
+    &.mobileDesc{display: none}
+    @media screen and (max-width: 1024px){
+        &.tabletDesc{display: block}
+        &:first-child{
+            margin-top: 15vh;
+        } 
+    }
+    @media screen and (max-width: 480px){
+        &.mobileDesc{display: block}
+        &.tabletDesc{display: none}
+        width: 90%;
+        margin: 4vh auto;
+        padding-bottom: 3vh;
+    }
 `;
 
 const Cover = styled.img`
@@ -69,6 +84,9 @@ const Cover = styled.img`
     min-width: 18vw;
     border-radius: 15px;
     box-shadow: 0px 0px 20px #000;
+    @media screen and (max-width: 480px){
+        width: 70%; 
+    }
 `;
 
 const Data = styled.div`
@@ -79,11 +97,13 @@ const Data = styled.div`
 const Title = styled.h3`
     font-size: 2.5rem;
     margin-bottom: 4vh;
-`;
-
-const InfoContainer = styled.div`
-    margin-bottom: 3vh;
-    font-size: .8rem;
+    @media screen and (max-width: 1024px){
+        font-size: 1.7rem;
+    }
+    @media screen and (max-width: 480px){
+        font-size: 1.5rem;
+        margin-bottom: 2vh;
+    }
 `;
 
 const Info = styled.span`
@@ -92,6 +112,13 @@ const Info = styled.span`
         display: block;
         margin-top: 1.5vh;
     }
+    @media screen and (max-width: 480px){
+        display: block;
+        margin-bottom: .5rem;
+        &.block{
+            margin-top: 0;
+        }
+    }
 `;
 
 const Divider = styled.span`
@@ -99,11 +126,25 @@ const Divider = styled.span`
     font-weight: bold;
 `;
 
+const InfoContainer = styled.div`
+    margin-bottom: 3vh;
+    font-size: .8rem;
+    @media screen and (max-width: 480px){
+        ${Divider}{
+            display: none;
+        }
+    }
+`;
+
 const Description = styled.p`
     line-height: 1.5;
     opacity: .8;
     font-size: .9rem;
+    @media screen and (max-width: 1024px){
+        &.pcDesc{display: none}
+    }
 `;
+
 
 const Detail = (props) => {
 
@@ -126,14 +167,16 @@ const Detail = (props) => {
                             <InfoContainer>
                                 <Info>{detailResult.release_date ? detailResult.release_date.substring(0, 4) : detailResult.first_air_date ? detailResult.first_air_date.substring(0, 4) : "-"}</Info>
                                 <Divider>·</Divider>
-                                <Info>{detailResult.runtime ? `${detailResult.runtime} min` : `${detailResult.seasons.length} seasons & ${detailResult.seasons[detailResult.seasons.length-1].episode_count} episodes`}</Info>
+                                <Info>{detailResult.runtime ? `${detailResult.runtime} min` : detailResult.seasons ? `${detailResult.seasons.length} seasons & ${detailResult.seasons[detailResult.seasons.length-1].episode_count} episodes` : ""}</Info>
                                 <Divider>·</Divider>
                                 <Info>{detailResult.production_countries.map((country, index) => index === detailResult.production_countries.length-1 ? country.name : country.name+" & ")}</Info>
                                 <Info className="block">{detailResult.genres.map((genre, index) => index === detailResult.genres.length-1 ? genre.name : genre.name+" · ")}</Info>
                             </InfoContainer>
-                            <Description>{detailResult.overview}</Description>
+                            <Description className="pcDesc">{detailResult.overview}</Description>
                         </Data>
                     </Section>
+                    <Section className="tabletDesc"><Description>"{detailResult.overview.length < 300 ? detailResult.overview : `${detailResult.overview.substring(0,300)}...`}"</Description></Section>
+                    <Section className="mobileDesc"><Description>"{detailResult.overview.length < 200 ? detailResult.overview : `${detailResult.overview.substring(0,200)}...`}"</Description></Section>
                     <Section>
                         <DetailIframe key={props.match.params.id + "Iframe"} title ={detailResult.title ? detailResult.title : detailResult.name} />
                     </Section>

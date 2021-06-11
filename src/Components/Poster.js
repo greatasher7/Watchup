@@ -29,23 +29,28 @@ const Image = styled.div`
     &:hover{
         box-shadow: 0px 0px 15px #e6bd0a;
     }
+    @media screen and (max-width: 1024px){
+        height: 12rem;
+        border-radius: 10px;
+    }
     @media screen and (max-width: 480px){
-        height: 110px;
+        height: 8rem;
         border-radius: 10px;
     }
 `;
 
 const Rating = styled.span`
-    font-size: 12px;
+    font-size: .8rem;
     position: absolute;
     bottom: 10px;
     right: 10px;
     opacity: 0;
     transition: opacity .2s ease-in-out;
+    
 `;
 
 const ImageContainer = styled.div`
-    margin-bottom: 8px;
+    margin-bottom: .7rem;
     position: relative;
     &:hover{
         ${Image}{
@@ -62,18 +67,31 @@ const CaptionContainer = styled.div`
 `;
 
 const Title = styled.span`
-    font-size: 14px;
+    font-size: .8rem;
+    height: 1.2rem;
     display: block;
-    height: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-bottom: 3px;
+    @media screen and (max-width: 1024px){
+        font-size: 1rem;
+        height: 1.5rem;
+    }
+    @media screen and (max-width: 480px){
+        font-size: .8rem;
+        height: 1.2rem;
+    }
 `;
 
 const Year = styled.span`
-    font-size: 12px;
+    font-size: .7rem;
     opacity: .5;
+    @media screen and (max-width: 1024px){
+        font-size: .9rem;
+    }
+    @media screen and (max-width: 480px){
+        font-size: .7rem;
+    }
 `;
 
 const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) => (

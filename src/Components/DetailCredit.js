@@ -8,6 +8,9 @@ const Container = styled.div`
     grid-template-columns: repeat(7, 1fr);
     row-gap: 3vh;
     justify-content: space-between;
+    @media screen and (max-width: 480px){
+        grid-template-columns: repeat(5, 1fr);
+    }
 `;
 
 const Title = styled.h3`
@@ -20,7 +23,10 @@ const Article = styled.div`
     font-size: .6rem;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;    
+    flex-wrap: wrap;
+    @media screen and (max-width: 480px){
+        display: ${props => Number(props.index.replace("cast", ""))>4 ? "none" : "block"};
+    }
 `;
 
 const ProfileImg = styled.img`
@@ -28,6 +34,13 @@ const ProfileImg = styled.img`
     width: 80%;
     box-shadow: 0px 0px 10px #777;
     border-radius: 20%;
+    margin: 0 auto;
+    @media screen and (max-width: 1024px){
+        height: 6rem;
+    }
+    @media screen and (max-width: 480px){
+        height: 6rem;
+    }
 `;
 
 const Name = styled.h4`
@@ -36,6 +49,9 @@ const Name = styled.h4`
     line-height: 1.2;
     font-size: .7rem;
     margin-top: .9vh;
+    @media screen and (max-width: 1024px){
+        font-size: .6rem;
+    }
 `;
 
 const Character = styled.span`
@@ -45,6 +61,9 @@ const Character = styled.span`
     line-height: 1.1;
     text-align: center;
     display: block;
+    @media screen and (max-width: 1024px){
+        font-size: .6rem;
+    }
 `;
 
 const DetailCredit = ({castResult}) => {
@@ -58,7 +77,7 @@ const DetailCredit = ({castResult}) => {
                         return false; 
                     }
                     return(
-                        <Article key={cast.id}>
+                        <Article key={cast.id} index ={`cast${index}`}>
                             <ProfileImg src={cast.profile_path ? `https://image.tmdb.org/t/p/w300/${cast.profile_path}` : require("assets/noCastSmall.PNG").default}/>
                             <Name>{cast.name}</Name>
                             <Character>{cast.character}</Character>
