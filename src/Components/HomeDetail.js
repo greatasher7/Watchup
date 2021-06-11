@@ -121,7 +121,7 @@ const DetailLink = styled(Link)`
 const HomeDetail = ({movie}) => {
 
     const [id, setId] = useState()
-    const [error, setError] = useState(true);
+    const [error, setError] = useState(false);
 
     const getYoutubeId = async () => {
         try{
@@ -130,6 +130,7 @@ const HomeDetail = ({movie}) => {
             setId(trailerId);
         } catch (e){
             setError(e);
+            console.log(e);
         } finally{
             
         }
