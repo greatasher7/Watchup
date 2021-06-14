@@ -39,6 +39,7 @@ const Video = styled.iframe`
 
 const Iframe = ({title}) => {
     const [id, setId] = useState([])
+    const [error, setError] = useState(false);
 
     const getYoutubeId = async () => {
         try{
@@ -50,6 +51,7 @@ const Iframe = ({title}) => {
             setId([trailerId1, trailerId2, idOst]);
         } catch (e){    
             console.log(e);
+            setError(e);
         } finally{
             
         }
@@ -65,7 +67,7 @@ const Iframe = ({title}) => {
                     title="Official Trailer 1" 
                     id="player" 
                     type="text/html" 
-                    src={`https://www.youtube.com/embed/${id[0]}`}
+                    src={!error ? `https://www.youtube.com/embed/${id[0]}` : "https://www.youtube.com/embed/3lfnR7OhZY8"}
                     frameborder="0" 
                 />
             </Article>
@@ -75,7 +77,7 @@ const Iframe = ({title}) => {
                     title="Official Trailer 2" 
                     id="player" 
                     type="text/html" 
-                    src={`https://www.youtube.com/embed/${id[1]}`}
+                    src={!error ? `https://www.youtube.com/embed/${id[1]}` : "https://www.youtube.com/embed/u8G-BRtegO8"}
                     frameborder="0" 
                 />
             </Article>
@@ -85,7 +87,7 @@ const Iframe = ({title}) => {
                     title="OST" 
                     id="player" 
                     type="text/html" 
-                    src={`https://www.youtube.com/embed/${id[2]}`}
+                    src={!error ? `https://www.youtube.com/embed/${id[2]}` : "https://www.youtube.com/embed/l9_-2oG4Cc0"}
                     frameborder="0" 
                 />
             </Article>
