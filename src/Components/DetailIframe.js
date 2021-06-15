@@ -62,7 +62,7 @@ const Iframe = ({title}) => {
     return(
         <Container>
             <Article>
-                <VideoTitle>Official Trailer 1</VideoTitle>
+                <VideoTitle>Trailer 1</VideoTitle>
                 <Video 
                     title="Official Trailer 1" 
                     id="player" 
@@ -72,7 +72,7 @@ const Iframe = ({title}) => {
                 />
             </Article>
             <Article>
-                <VideoTitle>Official Trailer 2</VideoTitle>
+                <VideoTitle>Trailer 2</VideoTitle>
                 <Video 
                     title="Official Trailer 2" 
                     id="player" 
