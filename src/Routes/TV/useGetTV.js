@@ -15,10 +15,10 @@ const useGetTV = (url) => {
             if(url === "/show"){
                 const {data: {results}} = await tvApi.popular(page);
                 shows = results;
-            } else if(url === "/show/onTheAir"){
+            } else if(url === "/show/ontheair"){
                 const {data: {results}} = await tvApi.onTheAir(page);
                 shows = results;
-            } else if(url === "/show/airingToday"){
+            } else if(url === "/show/airingtoday"){
                 const {data: {results}} = await tvApi.airingToday(page);
                 shows = results;
             } else{
