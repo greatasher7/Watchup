@@ -2,6 +2,8 @@
 
 React.js 를 사용하여 제작한 영화정보 서비스 입니다.
 
+- 링크: https://watchup.netlify.app
+
 
 TMDB api를 통해 가져온 실시간 정보들을 보여주는 서비스이며, 
 처음 React를 공부하면서 React의 구조와 SPA, Routet, Components 등의 
